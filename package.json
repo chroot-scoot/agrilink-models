@@ -1,0 +1,22 @@
+{
+  "name": "agrilink-models",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "dotenv -c -- drizzle-kit push:pg",
+    "db:studio": "dotenv -c -- drizzle-kit studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "dotenv-cli": "^7.4.1",
+    "drizzle-kit": "^0.20.17"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.30.9",
+    "postgres": "^3.4.4"
+  }
+}
