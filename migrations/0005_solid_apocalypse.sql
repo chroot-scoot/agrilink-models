@@ -1,0 +1,1 @@
+ALTER TABLE "product_profiles" RENAME COLUMN "store_rating" TO "product_rating";

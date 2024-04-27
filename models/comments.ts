@@ -1,6 +1,6 @@
 import { integer, pgTable, uuid, text, time } from "drizzle-orm/pg-core";
-import { store } from "./stores";
-import { post } from "./posts";
+import { store } from "./stores.js";
+import { post } from "./posts.js";
 
 export const comment = pgTable("community_post_comments", {
   id: uuid("comment_id").primaryKey().defaultRandom(),

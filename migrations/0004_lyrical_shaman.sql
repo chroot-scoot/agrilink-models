@@ -1,0 +1,1 @@
+ALTER TABLE "store_profile" ALTER COLUMN "store_contact_number" SET DATA TYPE varchar;

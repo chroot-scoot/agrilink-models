@@ -1,6 +1,6 @@
 /** @type { import("drizzle-kit").Config } */
 const config = {
-  schema: "./models",
+  schema: "./build/models",
   out: "./migrations",
   driver: "pg",
   dbCredentials: {

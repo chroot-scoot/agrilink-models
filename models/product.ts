@@ -6,7 +6,7 @@ import {
   decimal,
   boolean,
 } from "drizzle-orm/pg-core";
-import { store } from "./stores";
+import { store } from "./stores.js";
 
 export const products = pgTable("product_profiles", {
   id: uuid("product_id").primaryKey().defaultRandom(),
@@ -18,5 +18,5 @@ export const products = pgTable("product_profiles", {
   unit: varchar("inventory_unit"),
   isOrganic: boolean("is_organic").default(false),
   isSeasonal: boolean("is_seasonal").default(false),
-  rating: decimal("store_rating").default("0.0"),
+  rating: decimal("product_rating").default("0.0"),
 });

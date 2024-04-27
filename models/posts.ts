@@ -1,5 +1,5 @@
 import { integer, pgTable, uuid, text, time } from "drizzle-orm/pg-core";
-import { store } from "./stores";
+import { store } from "./stores.js";
 
 export const post = pgTable("community_post", {
   id: uuid("post_id").primaryKey().defaultRandom(),

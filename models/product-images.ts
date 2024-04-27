@@ -1,5 +1,5 @@
 import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
-import { products } from "./product";
+import { products } from "./product.js";
 
 export const productImages = pgTable("product_images", {
   id: uuid("product_img_id").primaryKey().defaultRandom(),

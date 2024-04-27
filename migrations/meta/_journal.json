@@ -29,6 +29,20 @@
       "when": 1714251469374,
       "tag": "0003_aspiring_exodus",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1714256153148,
+      "tag": "0004_lyrical_shaman",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1714256833671,
+      "tag": "0005_solid_apocalypse",
+      "breakpoints": true
     }
   ]
 }
