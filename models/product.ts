@@ -5,6 +5,7 @@ import {
   char,
   integer,
   decimal,
+  boolean,
 } from "drizzle-orm/pg-core";
 import { store } from "./stores";
 
@@ -16,4 +17,6 @@ export const products = pgTable("product_profiles", {
   price: integer("product_price").notNull(),
   inventory: decimal("product_inventory"),
   unit: varchar("inventory_unit"),
+  isOrganic: boolean("is_organic").default(false),
+  isSeasonal: boolean("is_seasonal").default(false),
 });

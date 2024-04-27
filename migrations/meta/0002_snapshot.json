@@ -1,0 +1,521 @@
+{
+  "id": "43f2ab2a-0bb0-4738-92fe-c4a2d739aa8f",
+  "prevId": "7b172a3d-671e-47a7-b475-2afc58ad18c2",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "community_post_comments": {
+      "name": "community_post_comments",
+      "schema": "",
+      "columns": {
+        "comment_id": {
+          "name": "comment_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "post": {
+          "name": "post",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "original_poster": {
+          "name": "original_poster",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "post_rating": {
+          "name": "post_rating",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "comment_content": {
+          "name": "comment_content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "community_post_comments_post_community_post_post_id_fk": {
+          "name": "community_post_comments_post_community_post_post_id_fk",
+          "tableFrom": "community_post_comments",
+          "tableTo": "community_post",
+          "columnsFrom": [
+            "post"
+          ],
+          "columnsTo": [
+            "post_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "community_post_comments_original_poster_store_profile_store_id_fk": {
+          "name": "community_post_comments_original_poster_store_profile_store_id_fk",
+          "tableFrom": "community_post_comments",
+          "tableTo": "store_profile",
+          "columnsFrom": [
+            "original_poster"
+          ],
+          "columnsTo": [
+            "store_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "community_post": {
+      "name": "community_post",
+      "schema": "",
+      "columns": {
+        "post_id": {
+          "name": "post_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "original_poster": {
+          "name": "original_poster",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "number_comments": {
+          "name": "number_comments",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "post_rating": {
+          "name": "post_rating",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "post_content": {
+          "name": "post_content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "community_post_original_poster_store_profile_store_id_fk": {
+          "name": "community_post_original_poster_store_profile_store_id_fk",
+          "tableFrom": "community_post",
+          "tableTo": "store_profile",
+          "columnsFrom": [
+            "original_poster"
+          ],
+          "columnsTo": [
+            "store_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "product_images": {
+      "name": "product_images",
+      "schema": "",
+      "columns": {
+        "product_img_id": {
+          "name": "product_img_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "product_id": {
+          "name": "product_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "product_image_file": {
+          "name": "product_image_file",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "product_image_description": {
+          "name": "product_image_description",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "product_image_url": {
+          "name": "product_image_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "product_images_product_id_product_profiles_product_id_fk": {
+          "name": "product_images_product_id_product_profiles_product_id_fk",
+          "tableFrom": "product_images",
+          "tableTo": "product_profiles",
+          "columnsFrom": [
+            "product_id"
+          ],
+          "columnsTo": [
+            "product_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "product_reviews": {
+      "name": "product_reviews",
+      "schema": "",
+      "columns": {
+        "product_review_id": {
+          "name": "product_review_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "product_id": {
+          "name": "product_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "product_reviewer": {
+          "name": "product_reviewer",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "product_review_content": {
+          "name": "product_review_content",
+          "type": "varchar(250)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "given_product_rating": {
+          "name": "given_product_rating",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "product_reviews_product_id_product_profiles_product_id_fk": {
+          "name": "product_reviews_product_id_product_profiles_product_id_fk",
+          "tableFrom": "product_reviews",
+          "tableTo": "product_profiles",
+          "columnsFrom": [
+            "product_id"
+          ],
+          "columnsTo": [
+            "product_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "product_profiles": {
+      "name": "product_profiles",
+      "schema": "",
+      "columns": {
+        "product_id": {
+          "name": "product_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "product_name": {
+          "name": "product_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "about_product": {
+          "name": "about_product",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "store_id": {
+          "name": "store_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "product_price": {
+          "name": "product_price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "product_inventory": {
+          "name": "product_inventory",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "inventory_unit": {
+          "name": "inventory_unit",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_organic": {
+          "name": "is_organic",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "is_seasonal": {
+          "name": "is_seasonal",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "product_profiles_store_id_store_profile_store_id_fk": {
+          "name": "product_profiles_store_id_store_profile_store_id_fk",
+          "tableFrom": "product_profiles",
+          "tableTo": "store_profile",
+          "columnsFrom": [
+            "store_id"
+          ],
+          "columnsTo": [
+            "store_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "store_images": {
+      "name": "store_images",
+      "schema": "",
+      "columns": {
+        "store_img_id": {
+          "name": "store_img_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "store_id": {
+          "name": "store_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "store_image_file": {
+          "name": "store_image_file",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "store_image_description": {
+          "name": "store_image_description",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "store_image_url": {
+          "name": "store_image_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "store_images_store_id_store_profile_store_id_fk": {
+          "name": "store_images_store_id_store_profile_store_id_fk",
+          "tableFrom": "store_images",
+          "tableTo": "store_profile",
+          "columnsFrom": [
+            "store_id"
+          ],
+          "columnsTo": [
+            "store_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "store_reviews": {
+      "name": "store_reviews",
+      "schema": "",
+      "columns": {
+        "store_review_id": {
+          "name": "store_review_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "store_id": {
+          "name": "store_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "store_reviewer": {
+          "name": "store_reviewer",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "store_review_content": {
+          "name": "store_review_content",
+          "type": "varchar(250)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "given_store_rating": {
+          "name": "given_store_rating",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "store_reviews_store_id_store_profile_store_id_fk": {
+          "name": "store_reviews_store_id_store_profile_store_id_fk",
+          "tableFrom": "store_reviews",
+          "tableTo": "store_profile",
+          "columnsFrom": [
+            "store_id"
+          ],
+          "columnsTo": [
+            "store_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "store_profile": {
+      "name": "store_profile",
+      "schema": "",
+      "columns": {
+        "store_id": {
+          "name": "store_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "store_name": {
+          "name": "store_name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "about_store": {
+          "name": "about_store",
+          "type": "varchar(250)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "store_location_city": {
+          "name": "store_location_city",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "store_location_state": {
+          "name": "store_location_state",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "store_contact_number": {
+          "name": "store_contact_number",
+          "type": "char(10)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "store_contact_email": {
+          "name": "store_contact_email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "store_profile_store_contact_number_unique": {
+          "name": "store_profile_store_contact_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "store_contact_number"
+          ]
+        },
+        "store_profile_store_contact_email_unique": {
+          "name": "store_profile_store_contact_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "store_contact_email"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

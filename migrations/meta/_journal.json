@@ -15,6 +15,13 @@
       "when": 1714237059684,
       "tag": "0001_tiresome_master_mold",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714249847287,
+      "tag": "0002_daffy_viper",
+      "breakpoints": true
     }
   ]
 }
