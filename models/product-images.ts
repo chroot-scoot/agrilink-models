@@ -2,7 +2,7 @@ import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
 import { products } from "./product";
 
 export const productImages = pgTable("product_images", {
-  id: uuid("product_img_id").primaryKey(),
+  id: uuid("product_img_id").primaryKey().defaultRandom(),
   product: uuid("product_id").references(() => products.id, {
     onDelete: "cascade",
   }),

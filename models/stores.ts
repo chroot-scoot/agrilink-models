@@ -1,7 +1,7 @@
 import { pgTable, uuid, varchar, char } from "drizzle-orm/pg-core";
 
 export const store = pgTable("store_profile", {
-  id: uuid("store_id").primaryKey(),
+  id: uuid("store_id").primaryKey().defaultRandom(),
   name: varchar("store_name").notNull(),
   about: varchar("about_store", { length: 250 }),
   location_city: varchar("store_location_city").notNull(),
