@@ -22,6 +22,13 @@
       "when": 1714249847287,
       "tag": "0002_daffy_viper",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1714251469374,
+      "tag": "0003_aspiring_exodus",
+      "breakpoints": true
     }
   ]
 }

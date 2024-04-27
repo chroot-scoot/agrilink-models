@@ -2,7 +2,6 @@ import {
   pgTable,
   uuid,
   varchar,
-  char,
   integer,
   decimal,
   boolean,
@@ -19,4 +18,5 @@ export const products = pgTable("product_profiles", {
   unit: varchar("inventory_unit"),
   isOrganic: boolean("is_organic").default(false),
   isSeasonal: boolean("is_seasonal").default(false),
+  rating: decimal("store_rating").default("0.0"),
 });
